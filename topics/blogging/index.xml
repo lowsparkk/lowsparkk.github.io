@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogging on Lowsparkk Labs</title>
+    <link>/topics/blogging/</link>
+    <description>Recent content in Blogging on Lowsparkk Labs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-EN</language>
+    <managingEditor>low.sparkk@yahoo.com (Low Sparkk)</managingEditor>
+    <webMaster>low.sparkk@yahoo.com (Low Sparkk)</webMaster>
+    <copyright>(c) 2016 Low Sparkk.</copyright>
+    <lastBuildDate>Sun, 29 May 2016 17:20:26 -0700</lastBuildDate>
+    <atom:link href="/topics/blogging/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Setting Up a hugo static site on GitHub pages</title>
+      <link>/2016/05/29/setting-up-a-hugo-static-site-on-github-pages/</link>
+      <pubDate>Sun, 29 May 2016 17:20:26 -0700</pubDate>
+      <author>low.sparkk@yahoo.com (Low Sparkk)</author>
+      <guid>/2016/05/29/setting-up-a-hugo-static-site-on-github-pages/</guid>
+      <description>&lt;p&gt;Instructions for setting up a static site on github pages using hugo.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Set up a hugo site in a new directory&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; md ~/blog
+ cd ~/blog
+ hugo new site .
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Clone the theme directory inside the &lt;code&gt;~/blog&lt;/code&gt; directory&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/enten/hyde-y.git themes/hyde-y themes/hyde-y
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Create the &lt;code&gt;~/blog/data&lt;/code&gt; folder and create a file called &lt;code&gt;Menu.toml&lt;/code&gt; with the following&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-toml&#34;&gt;[posts]
+  Name = &amp;quot;posts&amp;quot;
+  Title = &amp;quot;Show list of posts&amp;quot;
+  URL = &amp;quot;/post&amp;quot;
+
+
+[topics]
+  Name = &amp;quot;topics&amp;quot;
+  Title = &amp;quot;Show list of topics&amp;quot;
+  URL = &amp;quot;/topics&amp;quot;
+
+
+[tags]
+  Name = &amp;quot;tags&amp;quot;
+  Title = &amp;quot;Show list of tags&amp;quot;
+  URL = &amp;quot;/tags&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Create a new post, still in the &lt;code&gt;~/blog&lt;/code&gt; directory&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hugo new post/setting-up-hugo-github-pages.md
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Edit the &lt;code&gt;config.toml&lt;/code&gt; file in the &lt;code&gt;~/blog&lt;/code&gt; directory&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-toml&#34;&gt;baseurl = &amp;quot;/&amp;quot;
+languageCode = &amp;quot;en-us&amp;quot;
+title = &amp;quot;Lowsparkk Labs&amp;quot;
+theme = &amp;quot;hyde-y&amp;quot;
+
+
+[permalinks]
+  post = &amp;quot;/:year/:month/:day/:slug/&amp;quot;
+  code = &amp;quot;/:slug/&amp;quot;
+
+
+[taxonomies]
+  tag = &amp;quot;tags&amp;quot;
+  topic = &amp;quot;topics&amp;quot;
+
+
+[author]
+  name = &amp;quot;Low Sparkk&amp;quot;
+  email = &amp;quot;low.sparkk@yahoo.com&amp;quot;
+
+
+[params]
+  # You can use markdown here.
+  brand = &amp;quot;Your Brand Name&amp;quot;
+  topline = &amp;quot;your tag line&amp;quot;
+
+
+  # Sidebar position
+  # false, true, &amp;quot;left&amp;quot;, &amp;quot;right&amp;quot;
+  sidebar = &amp;quot;left&amp;quot;
+
+
+  home = &amp;quot;home&amp;quot;
+
+
+  # Select a syntax highight.
+  # Check the static/css/highlight directory for options.
+  highlight = &amp;quot;solarized_light&amp;quot;
+
+
+  # Google Analytics.
+  googleAnalytics = &amp;quot;&amp;quot; #Your Google Analytics tracking code
+
+
+  # Sidebar social links.
+  github = &amp;quot;&amp;quot; # Your Github profile ID
+  bitbucket = &amp;quot;&amp;quot; # Your Bitbucket profile ID
+  linkedin = &amp;quot;&amp;quot; # Your LinkedIn profile ID (from public URL)
+  googleplus = &amp;quot;&amp;quot; # Your Google+ profile ID
+  facebook = &amp;quot;&amp;quot; # Your Facebook profile ID
+  twitter = &amp;quot;&amp;quot; # Your Twitter profile ID
+  youtube = &amp;quot;&amp;quot;  # Your Youtube channel ID
+  flattr = &amp;quot;&amp;quot;  # populate with your flattr uid
+
+
+[blackfriday]
+  angledQuotes = true
+  fractions = true
+  hrefTargetBlank = false
+  latexDashes = true
+  plainIdAnchors = true
+  extensions = []
+  extensionmask = []
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Create &lt;strong&gt;two&lt;/strong&gt; empty repositories on github&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;blog&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Create the &lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt; with a &lt;code&gt;README.md&lt;/code&gt; file&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Kill your hugo server&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Initialize a git repository and add the remote&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd ~/blog
+git init
+git remote add origin git@github.com:&amp;lt;username&amp;gt;/blog.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Clone the &lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt; repo into a submodule in &lt;code&gt;public&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git submodule add git@github.com:&amp;lt;username&amp;gt;/&amp;lt;username&amp;gt;.github.io.git public
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Add everything in the &lt;code&gt;blog&lt;/code&gt; repository and push it to GitHub&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git add .
+git commit -m &amp;quot;your commit message here&amp;quot;
+git push -u origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Regenerate the static site HTML and push the &lt;code&gt;public&lt;/code&gt; submodule to GitHub&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hugo
+cd public
+git add .
+git commit -m &amp;quot;your commit message here&amp;quot;
+git push origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;In a short while, your static site will be available at &lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

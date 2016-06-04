@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C on Lowsparkk Labs</title>
+    <link>/tags/c/</link>
+    <description>Recent content in C on Lowsparkk Labs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-EN</language>
+    <managingEditor>low.sparkk@yahoo.com (Low Sparkk)</managingEditor>
+    <webMaster>low.sparkk@yahoo.com (Low Sparkk)</webMaster>
+    <copyright>(c) 2016 Low Sparkk.</copyright>
+    <lastBuildDate>Fri, 03 Jun 2016 15:44:45 -0700</lastBuildDate>
+    <atom:link href="/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>hello lowsparkk labs</title>
+      <link>/2016/06/03/hello-lowsparkk-labs/</link>
+      <pubDate>Fri, 03 Jun 2016 15:44:45 -0700</pubDate>
+      <author>low.sparkk@yahoo.com (Low Sparkk)</author>
+      <guid>/2016/06/03/hello-lowsparkk-labs/</guid>
+      <description>&lt;p&gt;Testing the &lt;code&gt;hyde-y&lt;/code&gt; theme for my blog. Disqus integration seems to be working
+just fine! Tags are showing too!!! Should I just use categories instead
+of tags?&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
