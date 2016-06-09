@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Arch Linux on Lowsparkk Labs</title>
+    <link>/tags/arch-linux/</link>
+    <description>Recent content in Arch Linux on Lowsparkk Labs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-EN</language>
+    <managingEditor>low.sparkk@yahoo.com (Low Sparkk)</managingEditor>
+    <webMaster>low.sparkk@yahoo.com (Low Sparkk)</webMaster>
+    <copyright>(c) 2016 Low Sparkk.</copyright>
+    <lastBuildDate>Thu, 09 Jun 2016 12:12:34 -0700</lastBuildDate>
+    <atom:link href="/tags/arch-linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Installing Arch Linux on my Gateway Laptop</title>
+      <link>/2016/06/09/installing-arch-linux-on-my-gateway-laptop/</link>
+      <pubDate>Thu, 09 Jun 2016 12:12:34 -0700</pubDate>
+      <author>low.sparkk@yahoo.com (Low Sparkk)</author>
+      <guid>/2016/06/09/installing-arch-linux-on-my-gateway-laptop/</guid>
+      <description>&lt;pre&gt;&lt;code&gt;parted /dev/sda
+mklabel msdos
+mkpart primary ext4 1 MiB 290 GiB
+set 1 boot on
+mkpart primary linux-swap 290 GiB 298 GiB
+quit
+
+mkfs.ext4 /dev/sda1
+mkswap /dev/sda2
+swapon /dev/sda2
+
+mount /dev/sda1 /mnt
+vim /etc/pacmand.d/mirrorlist
+pacstrap -i /mnt base base-devel
+genfstab -U /mnt &amp;gt; /mnt/etc/fstab
+arch-chroot /mnt /bin/bash
+
+nano /etc/locale.gen ==&amp;gt; LANG=en_US.UTF-8
+locale-gen
+
+echo LANG=en_US.UTF-8 &amp;gt; /etc/locale.conf
+export LANG=en_US.UTF-8
+
+tzselect ==&amp;gt; America/Los_Angeles
+ln -s /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
+
+hwclock --systohc --utc
+
+pacman -S grub os-prober
+grub-install --recheck --target=i386-pc /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+
+echo sienna &amp;gt; /etc/hostname
+passwd
+exit
+umount -R /mnt
+shutdown
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Remove USB stick, reboot, login as root. Plugin ethernet cable&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;systemctl start dhcpcd@enp6s0.service
+pacman -S iw wpa_supplicant dialog
+systemctl stop dhcpcd@enp6s0.service
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Pull out ethernet cable&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wifi-menu -o wlp2s0
+ping -c3 www.google.com
+
+pacman -Syu
+pacman -S zsh
+
+useradd -m -G wheel,users -s /usr/bin/zsh rkk
+passwd rkk
+pacman -S sudo
+visudo
+
+# uncomment the following line
+% wheel ALL=(ALL) ALL
+
+pacman -Sy
+pacman -S xorg-server xorg-server-utils # choose mesa-libgl
+pacman -S xf86-input-synaptics
+pacman -S xfce4 xfce4-goodies lxdm
+systemctl enable lxdm.service
+systemctl start lxdm.service
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For the XPS desktop, choose the following &lt;code&gt;UEFI-GPT&lt;/code&gt; partition instructions&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mkpart ESP fat32 1 MiB 513 MiB
+mkpart primary ext4 513 MiB 871 GiB
+mkpart primary linux-swap 871 GiB 100% # approximately 64G of swap space
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

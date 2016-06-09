@@ -5,36 +5,32 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <title>hello lowsparkk labs  &middot; Lowsparkk Labs</title>
+  <title>Installing Arch Linux on my Gateway Laptop  &middot; Lowsparkk Labs</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="description" content="" />
+<meta name="description" content="Arch Linux Installation Instructions" />
 
-<meta name="keywords" content="C&#43;&#43;, Haskell, Rust, ">
+<meta name="keywords" content="Arch Linux, ">
 
 
-<meta property="og:title" content="hello lowsparkk labs  &middot; Lowsparkk Labs ">
+<meta property="og:title" content="Installing Arch Linux on my Gateway Laptop  &middot; Lowsparkk Labs ">
 <meta property="og:site_name" content="Lowsparkk Labs"/>
-<meta property="og:url" content="/2016/06/03/hello-lowsparkk-labs/" />
+<meta property="og:url" content="/2016/06/09/installing-arch-linux-on-my-gateway-laptop/" />
 <meta property="og:locale" content="en-EN">
 
 
 <meta property="og:type" content="article" />
-<meta property="og:description" content=""/>
-<meta property="og:article:published_time" content="2016-06-03T15:44:45-07:00" />
-<meta property="og:article:modified_time" content="2016-06-03T15:44:45-07:00" />
+<meta property="og:description" content="Arch Linux Installation Instructions"/>
+<meta property="og:article:published_time" content="2016-06-09T12:12:34-07:00" />
+<meta property="og:article:modified_time" content="2016-06-09T12:12:34-07:00" />
 
   
     
-<meta property="og:article:tag" content="C&#43;&#43;">
-    
-<meta property="og:article:tag" content="Haskell">
-    
-<meta property="og:article:tag" content="Rust">
+<meta property="og:article:tag" content="Arch Linux">
     
   
 
@@ -44,20 +40,20 @@
   {
     "@context": "http://schema.org",
     "@type": "Article",
-    "headline": "hello lowsparkk labs",
+    "headline": "Installing Arch Linux on my Gateway Laptop",
     "author": {
       "@type": "Person",
       "name": "http://profiles.google.com/+?rel=author"
     },
-    "datePublished": "2016-06-03",
-    "description": "",
-    "wordCount":  27 
+    "datePublished": "2016-06-09",
+    "description": "Arch Linux Installation Instructions",
+    "wordCount":  206 
   }
 </script>
 
 
 
-<link rel="canonical" href="/2016/06/03/hello-lowsparkk-labs/" />
+<link rel="canonical" href="/2016/06/09/installing-arch-linux-on-my-gateway-laptop/" />
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
 <link href="/favicon.png" rel="icon">
@@ -154,23 +150,21 @@
 
 <article id="main-content" class="container main_content single">
   <header class="container hat">
-  <h1>hello lowsparkk labs
+  <h1>Installing Arch Linux on my Gateway Laptop
 </h1>
 
   <div class="metas">
-<time datetime="2016-06-03">3 Jun, 2016</time>
+<time datetime="2016-06-09">9 Jun, 2016</time>
 
 
+  
+    &middot; by Low Sparkk
   
   &middot; Read in about 1 min
-  &middot; (27 Words)
+  &middot; (206 Words)
   <br>
   
-<a class="label" href="/tags/c">C&#43;&#43;</a>
-
-<a class="label" href="/tags/haskell">Haskell</a>
-
-<a class="label" href="/tags/rust">Rust</a>
+<a class="label" href="/tags/arch-linux">Arch Linux</a>
 
 
 
@@ -179,9 +173,82 @@
 </header>
 
   <div class="container content">
-  <p>Testing the <code>hyde-y</code> theme for my blog. Disqus integration seems to be working
-just fine! Tags are showing too!!! Should I just use categories instead
-of tags?</p>
+  <pre><code>parted /dev/sda
+mklabel msdos
+mkpart primary ext4 1 MiB 290 GiB
+set 1 boot on
+mkpart primary linux-swap 290 GiB 298 GiB
+quit
+
+mkfs.ext4 /dev/sda1
+mkswap /dev/sda2
+swapon /dev/sda2
+
+mount /dev/sda1 /mnt
+vim /etc/pacmand.d/mirrorlist
+pacstrap -i /mnt base base-devel
+genfstab -U /mnt &gt; /mnt/etc/fstab
+arch-chroot /mnt /bin/bash
+
+nano /etc/locale.gen ==&gt; LANG=en_US.UTF-8
+locale-gen
+
+echo LANG=en_US.UTF-8 &gt; /etc/locale.conf
+export LANG=en_US.UTF-8
+
+tzselect ==&gt; America/Los_Angeles
+ln -s /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
+
+hwclock --systohc --utc
+
+pacman -S grub os-prober
+grub-install --recheck --target=i386-pc /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+
+echo sienna &gt; /etc/hostname
+passwd
+exit
+umount -R /mnt
+shutdown
+</code></pre>
+
+<p>Remove USB stick, reboot, login as root. Plugin ethernet cable</p>
+
+<pre><code>systemctl start dhcpcd@enp6s0.service
+pacman -S iw wpa_supplicant dialog
+systemctl stop dhcpcd@enp6s0.service
+</code></pre>
+
+<p>Pull out ethernet cable</p>
+
+<pre><code>wifi-menu -o wlp2s0
+ping -c3 www.google.com
+
+pacman -Syu
+pacman -S zsh
+
+useradd -m -G wheel,users -s /usr/bin/zsh rkk
+passwd rkk
+pacman -S sudo
+visudo
+
+# uncomment the following line
+% wheel ALL=(ALL) ALL
+
+pacman -Sy
+pacman -S xorg-server xorg-server-utils # choose mesa-libgl
+pacman -S xf86-input-synaptics
+pacman -S xfce4 xfce4-goodies lxdm
+systemctl enable lxdm.service
+systemctl start lxdm.service
+</code></pre>
+
+<p>For the XPS desktop, choose the following <code>UEFI-GPT</code> partition instructions</p>
+
+<pre><code>mkpart ESP fat32 1 MiB 513 MiB
+mkpart primary ext4 513 MiB 871 GiB
+mkpart primary linux-swap 871 GiB 100% # approximately 64G of swap space
+</code></pre>
 
 </div>
 
@@ -193,15 +260,11 @@ of tags?</p>
   
 
     
-    <a class="prev" href="/2016/05/29/setting-up-a-hugo-static-site-on-github-pages/" title="Setting Up a hugo static site on GitHub pages">
+    <a class="prev" href="/2016/06/03/hello-lowsparkk-labs/" title="hello lowsparkk labs">
       Previous
     </a>
     
 
-    
-    <a class="next" href="/2016/06/09/installing-arch-linux-on-my-gateway-laptop/" title="Installing Arch Linux on my Gateway Laptop">
-      Next
-    </a>
     
 
   
