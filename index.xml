@@ -49,42 +49,6 @@
     </item>
     
     <item>
-      <title>C&#43;&#43; links</title>
-      <link>/2016/06/14/c-links/</link>
-      <pubDate>Tue, 14 Jun 2016 10:01:33 -0700</pubDate>
-      <author>low.sparkk@yahoo.com (Low Sparkk)</author>
-      <guid>/2016/06/14/c-links/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://medium.com/hacker-daily/writing-high-performance-servers-in-modern-c-7cd00926828#.ee2wmioyp&#34; target=&#34;_blank&#34;&gt;Writing Modern C++ Servers in Wangle&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://medium.com/swlh/starting-a-tech-startup-with-c-6b5d5856e6de#.n5mzllzg4&#34; target=&#34;_blank&#34;&gt;Starting A Tech Startup With C++&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://ldionne.com/2015/11/29/efficient-parameter-pack-indexing/&#34; target=&#34;_blank&#34;&gt;Efficient Parameter Pack Indexing&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.feabhas.com/2014/12/the-rule-of-the-big-three-and-a-half-resource-management-in-c/&#34; target=&#34;_blank&#34;&gt;The Rule of Big Three and a Half&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.feabhas.com/2015/01/the-rule-of-the-big-four-and-a-half-move-semantics-and-resource-management/&#34; target=&#34;_blank&#34;&gt;The Rule of Big Four and a Half&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.feabhas.com/2015/01/the-rule-of-zero/&#34; target=&#34;_blank&#34;&gt;The Rule of Zero&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://blog.feabhas.com/2015/11/becoming-a-rule-of-zero-hero/&#34; target=&#34;_blank&#34;&gt;Becoming a Rule of Zero Hero&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/AustinBrunkhorst/CPP-Reflection/&#34; target=&#34;_blank&#34;&gt;C++ Reflection&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md&#34; target=&#34;_blank&#34;&gt;C++ Core Guidelines&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://stackoverflow.com/questions/33484671/n-dimensional-tensor-based-on-stdvector&#34; target=&#34;_blank&#34;&gt;N-Dimensional Tensor based on &lt;code&gt;std::vector&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://stackoverflow.com/questions/33067983/type-traits-contiguous-memory&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;type_traits&lt;/code&gt; Contiguous Memory&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://blog.coldflake.com/posts/Testing-C++-with-a-new-Catch/&#34; target=&#34;_blank&#34;&gt;Testing C++ With A New Catch&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://articles.emptycrate.com/2016/05/14/folds_in_cpp11_ish.html&#34; target=&#34;_blank&#34;&gt;Folds (ish) In C++11&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://eli.thegreenplace.net/2014/sfinae-and-enable_if/&#34; target=&#34;_blank&#34;&gt;SFINAE and &lt;code&gt;enable_if&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Installing Arch Linux on my Gateway Laptop</title>
       <link>/2016/06/09/installing-arch-linux-on-my-gateway-laptop/</link>
       <pubDate>Thu, 09 Jun 2016 12:12:34 -0700</pubDate>
